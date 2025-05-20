@@ -1,0 +1,82 @@
+from pathlib import Path
+
+# HTML content for the fake "hacked" warning page
+html_content = """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>تم اختراق جهازك</title>
+  <style>
+    body {
+      background-color: black;
+      color: red;
+      font-family: 'Courier New', Courier, monospace;
+      text-align: center;
+      padding-top: 100px;
+    }
+    h1 {
+      font-size: 50px;
+      animation: blink 1s infinite;
+    }
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    .code {
+      margin-top: 40px;
+      color: #00ff00;
+      font-size: 16px;
+      text-align: left;
+      margin-left: 20px;
+      margin-right: 20px;
+      height: 200px;
+      overflow-y: scroll;
+      background-color: #111;
+      padding: 15px;
+      border-radius: 10px;
+    }
+    button {
+      margin-top: 40px;
+      padding: 10px 20px;
+      background-color: red;
+      border: none;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body onload="playSound()">
+  <h1>🚨 تم اختراق جهازك بنجاح! 🚨</h1>
+  <div class="code">
+    <p>Downloading sensitive data...</p>
+    <p>Accessing webcam...</p>
+    <p>Encrypting files...</p>
+    <p>Uploading personal photos...</p>
+    <p>Tracking your location...</p>
+    <p>Contacting dark web...</p>
+    <p>تم الوصول إلى جميع ملفاتك...</p>
+    <p>لا تحاول إغلاق الصفحة...</p>
+  </div>
+  <button onclick="revealMessage()">استرجاع البيانات</button>
+  <p id="finalMsg" style="display:none; font-size: 20px; color: white; margin-top: 30px;">😅 امزح معك... لا تدخل أي رابط غير موثوق، خلك ذكي!</p>
+  <audio id="scream" src="https://www.soundjay.com/button/beep-10.mp3" preload="auto"></audio>
+  <script>
+    function playSound() {
+      document.getElementById('scream').play();
+    }
+    function revealMessage() {
+      document.getElementById('finalMsg').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
+"""
+
+# Save to a file
+file_path = Path("/mnt/data/fake_hack_warning.html")
+file_path.write_text(html_content, encoding="utf-8")
+file_path
